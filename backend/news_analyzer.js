@@ -44,7 +44,7 @@ Artikel hämtad från aftonbladet.se`;
 const analyzeArticle = async (articleText) => {
   try {
     const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4-turbo-preview",
       messages: [{
         role: "system", content: analyzerAiPrompt},
       {
