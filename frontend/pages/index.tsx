@@ -14,8 +14,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="container mx-auto px-2 max-w-screen-md flex-grow">
-        <header className="p-5 rounded bg-gradient-to-r from-yellow-500 via-blue-500 to-pink-500 my-1">
+      <div className="container mx-auto px-2 max-w-(--breakpoint-md) grow">
+        <header className="p-5 rounded-sm bg-linear-to-r from-yellow-500 via-blue-500 to-pink-500 my-1">
           <h1 className="text-white text-center text-2xl font-bold font-mono">Viktiga Nyheter 🎣</h1>
         </header>
         <main>
@@ -61,7 +61,7 @@ export default function Home() {
             {scoreToLoad > lowestScore && (
               <button 
                 id="loadMoreBtn" 
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5" 
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-sm mt-5" 
                 onClick={loadMore}
               >
                 Ladda fler
@@ -70,8 +70,8 @@ export default function Home() {
           </div>
         </main>
       </div>
-      <footer className="bg-gray-800 text-white p-5 mt-8 rounded">
-        <div className="container mx-auto px-2 max-w-screen-md">
+      <footer className="bg-gray-800 text-white p-5 mt-8 rounded-sm">
+        <div className="container mx-auto px-2 max-w-(--breakpoint-md)">
           <p className="text-center text-xs">
             Skapad av <a href="https://mansandersson.io" target="_blank" rel="noopener noreferrer">Måns Andersson</a>
           </p>
