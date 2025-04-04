@@ -32,7 +32,7 @@ export default function Home() {
                 <div key={score} className={score >= scoreToLoad ? "" : "hidden"}>
                   <div className='w-full border-t border-gray-300 my-3 relative'>
                     <span className='bg-white px-2 text-gray-500 text-xs absolute' style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-                      {score.toFixed(1)}
+                      {score ? score.toFixed(1) : ''}
                     </span>
                   </div>
 
