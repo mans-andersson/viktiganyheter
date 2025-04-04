@@ -1,10 +1,9 @@
-const { Configuration, OpenAIApi } = require("openai");
+const { OpenAI } = require("openai");
 require('dotenv').config();
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+const client = new OpenAI({
+  apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
 });
-const openai = new OpenAIApi(configuration);
 
 const analyzerAiPrompt = `You are an AGI model who will help to distinguish important news from noise.
 You will receive a news article and your goal is to evaluate it based on the following criteria: event magnitude, scale, and potential impact.
@@ -43,14 +42,12 @@ Artikel hämtad från aftonbladet.se`;
 
 const analyzeArticle = async (articleText) => {
   try {
-    const completion = await openai.createChatCompletion({
-      model: "gpt-4-turbo-preview",
-      messages: [{
-        role: "system", content: analyzerAiPrompt},
-      {
-        role: "user", content: articleText}]
+    const response = await client.responses.create({
+      model: "gpt-4o-2024-11-20",
+      instructions: analyzerAiPrompt,
+      input: articleText,
     });
-    return completion.data.choices[0];
+    return response;
   } catch (error) {
     if (error.response) {
       console.log(error.response.status);
@@ -83,7 +80,7 @@ const retryAnalyzeArticle = async (articleText, maxRetries = 20, retryInterval =
 };
 
 const processResponse = (response) => {
-  const messageContent = response.message.content + '\n';
+  const messageContent = response.output_text + '\n';
   console.log(messageContent);
 
   let regex = /:\s*(.*?)\n/g;
