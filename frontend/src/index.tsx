@@ -1,12 +1,20 @@
-import { useState } from 'react';
-import newsData from '../news.json';
+import { useEffect, useState } from 'react';
+import newsData from '../public/news.json';
 import { NewsItem, NewsGroup } from '../types/news';
+import './index.css';
 
 const MIN_SCORE_TO_LOAD = 6.5;
 
 export default function Home() {
   const [scoreToLoad, setScoreToLoad] = useState<number>(MIN_SCORE_TO_LOAD);
+  const [newsData, setNewsData] = useState<NewsItem[]>([]);
   const lowestScore = Math.min(...[...groupNews(newsData)].map(([score]) => score));
+  useEffect(() => {
+    fetch('/news.json')
+      .then(res => res.json())
+      .then(setNewsData)
+      .catch(err => console.error('Failed to fetch news.json:', err));
+  }, []);
 
   const loadMore = (): void => {
     setScoreToLoad(scoreToLoad - 1);
