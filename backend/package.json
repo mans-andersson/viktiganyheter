@@ -2,9 +2,11 @@
   "name": "viktiganyheter_backend",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "lambda_handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js",
+    "start:lambda": "node -e \"require('./lambda_handler').handler({}).then(console.log).catch(console.error)\""
   },
   "author": "Måns Andersson",
   "license": "MIT",
@@ -12,6 +14,8 @@
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.3.1",
     "openai": "^4.91.1",
-    "xml2js": "^0.6.2"
+    "xml2js": "^0.6.2",
+    "@aws-sdk/client-s3": "^3.0.0",
+    "@aws-sdk/client-cloudfront": "^3.0.0"
   }
 }
