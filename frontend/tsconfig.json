@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types/**/*.d.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "types/**/*.d.ts", "vite.config.js"],
   "exclude": ["node_modules"]
 }
