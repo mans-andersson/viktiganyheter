@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="container mx-auto px-2 max-w-screen-md flex-grow">
+      <div className="container mx-auto px-2 max-w-screen-sm flex-grow">
         <header className="p-5 rounded bg-gradient-to-r from-yellow-500 via-blue-500 to-pink-500 my-1">
           <h1 className="text-white text-center text-2xl font-bold font-mono">Viktiga Nyheter 🎣</h1>
         </header>
